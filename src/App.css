@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+form {
+  margin: 40px;
+  
+}
+
+button{
+  border-radius: 10%;
+  margin-left: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
