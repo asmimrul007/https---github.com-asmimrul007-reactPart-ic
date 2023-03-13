@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { CreateNoteCtx } from '../context/Note';
 
 
-const CreateAndUpdate = () => {
+const NoteCreatingForm = () => {
 
   const obj = useContext(CreateNoteCtx)
 
@@ -31,4 +31,4 @@ const CreateAndUpdate = () => {
   )
 }
 
-export default CreateAndUpdate
+export default NoteCreatingForm;

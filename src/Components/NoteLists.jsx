@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react"; 
 import { CreateNoteCtx } from "../context/Note";
 
-const EditAndRemove = () => {
+const NoteLists = () => {
   const obj = useContext(CreateNoteCtx)
 
  
@@ -22,4 +22,4 @@ const EditAndRemove = () => {
   );
 };
 
-export default EditAndRemove;
+export default NoteLists;

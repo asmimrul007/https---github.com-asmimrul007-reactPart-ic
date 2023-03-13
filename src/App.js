@@ -1,16 +1,15 @@
 import "./App.css";
-import { useState } from "react";
-import CreateAndUpdate from "./Components/CreateAndUpdate";
-import EditAndRemove from "./Components/EditAndRemove";
+import NoteCreatingForm from "./Components/NoteCreatingForm";
+import NoteLists from "./Components/NoteLists";
 
 function App() {
   
   return (
     <div className="App">
 
-      <CreateAndUpdate />
+      <NoteCreatingForm />
 
-      <EditAndRemove/>
+      <NoteLists/>
       
     </div>
   );
