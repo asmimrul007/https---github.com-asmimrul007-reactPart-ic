@@ -1,46 +1,18 @@
 import React from 'react'
-
-const CreateAndUpdate = (props) => {
-
-  const notesCreateHandler = (event) => {
-    event.preventDefault();
-    if (props.noteTitle) {
-      const newNote = {
-        id: Date.now(),
-        title: props.noteTitle,
-        isComplete: false,
-      };
-
-      props.setNotes([newNote, ...props.notes]);
-      props.setNoteTitle("");
-    } else {
-      alert("Please Enter a Valid title");
-    }
-  };
-
-  const updateHandler = (event) => {
-    event.preventDefault();
-    props.setNotes(
-      props.notes.map((item) => {
-        if (item.id === props.editableNote.id) {
-          item.title = props.noteTitle;
-        }
-
-        return item;
-      })
-    );
-    props.setEditMode(false);
-    props.setEditableNote(null);
-    props.setNoteTitle("");
-  };
+import { useContext } from 'react';
+import { CreateNoteCtx } from '../context/Note';
 
 
+const CreateAndUpdate = () => {
 
+  const obj = useContext(CreateNoteCtx)
+
+  
   return (
     <div>
       <form
         onSubmit={(event) => {
-          props.editMode ? updateHandler(event) : notesCreateHandler(event);
+          obj.editMode ? obj.updateHandler(event) : obj.notesCreateHandler(event);
         }}
       >
         <input
@@ -48,11 +20,11 @@ const CreateAndUpdate = (props) => {
           name=""
           id=""
           placeholder="Please enter a valid note"
-          value={props.noteTitle}
-          onChange={(e) => props.setNoteTitle(e.target.value)}
+          value={obj.noteTitle}
+          onChange={(e) => obj.setNoteTitle(e.target.value)}
         />
 
-        <button type="submit">{props.editMode ? "Update note" : "Add Note"}</button>
+        <button type="submit">{obj.editMode ? "Update note" : "Add Note"}</button>
       </form>
       
     </div>

@@ -1,26 +1,20 @@
 import React from "react";
+import { useContext } from "react"; 
+import { CreateNoteCtx } from "../context/Note";
 
-const EditAndRemove = (props) => {
-  const notesRemoveHandler = (noteId) => {
-    const newNotes = props.notes.filter((item) => item.id !== noteId);
-    props.setNotes(newNotes);
-  };
+const EditAndRemove = () => {
+  const obj = useContext(CreateNoteCtx)
 
-  const editHandler = (noteId) => {
-    const toBeEditedNote = props.notes.find((item) => item.id === noteId);
-    props.setEditMode(true);
-    props.setEditableNote(toBeEditedNote);
-    props.setNoteTitle(toBeEditedNote.title);
-  };
+ 
 
   return (
     <div>
       <ul>
-        {props.notes.map((note) => (
+        {obj.notes.map((note) => (
           <li>
             <span>{note.title}</span>
-            <button onClick={() => editHandler(note.id)}>Edit</button>
-            <button onClick={() => notesRemoveHandler(note.id)}>Remove</button>
+            <button onClick={() => obj.editHandler(note.id)}>Edit</button>
+            <button onClick={() => obj.notesRemoveHandler(note.id)}>Remove</button>
           </li>
         ))}
       </ul>
